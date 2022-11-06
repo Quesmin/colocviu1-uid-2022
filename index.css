@@ -1,0 +1,17 @@
+#rootContainer {
+    max-width: 800px;
+    padding-top: 10px;
+}
+
+.centerDiv {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+#listTitle {
+    padding-bottom: 20px;
+}
+
+.listElement {
+}

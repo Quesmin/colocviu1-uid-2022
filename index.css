@@ -13,5 +13,11 @@
     padding-bottom: 20px;
 }
 
-.listElement {
+.invalidInputValue {
+    border-color: red;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
 }

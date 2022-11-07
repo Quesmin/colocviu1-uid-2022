@@ -25,6 +25,7 @@
             type="text/javascript"
             src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"
         ></script>
+
         <title>Trivia</title>
     </head>
     <body>
@@ -53,33 +54,26 @@
                         <div class="form-floating pb-3">
                             <textarea
                                 class="form-control"
-                                placeholder="Leave a comment here"
-                                id="floatingTextarea"
+                                id="questionModalInput"
                             ></textarea>
-                            <label for="floatingTextarea">Question</label>
+                            <label for="questionModalInput">Question</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="answerModalInput" />
+                            <label for="answerModalInput">Answer</label>
                         </div>
                         <div class="form-floating mb-3">
                             <input
-                                type="email"
+                                type="number"
                                 class="form-control"
-                                id="floatingInput"
-                                placeholder="name@example.com"
+                                id="valueModalInput"
                             />
-                            <label for="floatingInput">Answer</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input
-                                type="email"
-                                class="form-control"
-                                id="floatingInput"
-                                placeholder="name@example.com"
-                            />
-                            <label for="floatingInput">Value</label>
+                            <label for="valueModalInput">Value</label>
                         </div>
                         <div class="form-floating">
                             <select
                                 class="form-select"
-                                id="floatingSelect"
+                                id="categoryModalInput"
                                 aria-label="Floating label select example"
                             >
                                 <option value="Music">Music</option>
@@ -87,8 +81,13 @@
                                 <option value="History">History</option>
                                 <option value="Famous">Famous</option>
                             </select>
-                            <label for="floatingSelect">Category</label>
+                            <label for="categoryModalInput">Category</label>
                         </div>
+                        <div
+                            id="modalError"
+                            class="alert alert-danger mt-3"
+                            role="alert"
+                        ></div>
                     </div>
                     <div class="modal-footer">
                         <button
@@ -98,7 +97,11 @@
                         >
                             Close
                         </button>
-                        <button type="button" class="btn btn-primary">
+                        <button
+                            id="addModalSubmitButton"
+                            type="button"
+                            class="btn btn-primary"
+                        >
                             Save changes
                         </button>
                     </div>
@@ -110,19 +113,24 @@
             <div class="row">
                 <div class="input-group mb-3 col centerDiv">
                     <input
-                        type="text"
+                        id="downloadQuestionsInput"
+                        type="number"
                         class="form-control"
                         placeholder="Număr întrebări"
                         aria-label="Număr întrebări"
                         aria-describedby="button-addon2"
                     />
-                    <button type="button" class="btn btn-outline-success">
+                    <button
+                        id="downloadQuestionsButton"
+                        type="button"
+                        class="btn btn-outline-success"
+                    >
                         Descarcă
                     </button>
                 </div>
-                <!-- <div class="addQuestion"></div> -->
-                <div id="addQuestion" class="col centerDiv">
+                <div class="col centerDiv">
                     <button
+                        id="addQuestion"
                         type="button"
                         data-bs-toggle="modal"
                         data-bs-target="#addModal"
@@ -134,23 +142,15 @@
             </div>
             <div class="py-3">
                 <h3 id="listTitle">Intrebari</h3>
-                <div class="listElement shadow rounded p-3">
-                    <h5>Question</h5>
-                    <p>
-                        Indiana University's Lilly Library hath a first edition
-                        of this, printed at London in 1611
-                    </p>
-
-                    <h5>Answer</h5>
-                    <p>the King James Bible</p>
-
-                    <h5>Value</h5>
-                    <p>800</p>
-
-                    <h5>Created at</h5>
-                    <p>2022-07-27 15:05PM</p>
-                    <h5>Category</h5>
-                    <p>libraries</p>
+                <div id="listItemsContainer"></div>
+                <div
+                    id="listLoadingSpinner"
+                    class="container-fluid d-flex justify-content-center align-items-center"
+                >
+                    <div
+                        class="spinner-border text-warning mt-3"
+                        role="status"
+                    ></div>
                 </div>
             </div>
         </div>
